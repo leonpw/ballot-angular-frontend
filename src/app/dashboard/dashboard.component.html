@@ -1,7 +1,56 @@
-<p>YOur wallet address is {{walletAddress}}</p>
-<p>YOur balance is {{etherBalance}}</p>
-<p>Total supply: {{totalSupply}}</p>
+<p>YOur wallet address is {{ walletAddress }}</p>
+<p>YOur balance is {{ etherBalance }}</p>
+<p>Total supply: {{ totalSupply }}</p>
 
-<input type="text" (keyup)="onKeyUp($event)" id="yourkey" placeholder="Private key"/>
+<input
+  type="text"
+  (keyup)="onKeyUp($event)"
+  id="yourkey"
+  placeholder="Private key"
+/>
 
-<button class = "btn btn-priamry my-2" (click) ="login()" >Login with your private key</button>
+<button class="btn btn-priamry my-2" (click)="login()">
+  Login with your private key
+</button>
+
+<div>
+  <h3>Delegate voting power</h3>
+  <div>
+    <label for="address-input">Address</label>
+    <input
+      type="text"
+      (keyup)="onChangeDelegateAddress($event)"
+      id="address-input"
+      placeholder="Address"
+    />
+  </div>
+  <button class="btn btn-priamry my-2" (click)="submitDelegate()">
+    Delegate vote power
+  </button>
+</div>
+
+<div>
+  <h3>Cast a vote</h3>
+  <div>
+    <label for="proposal-input">Proposal ID</label>
+    <input
+      type="text"
+      (keyup)="onChangeProposal($event)"
+      id="proposal-input"
+      placeholder="Proposal ID"
+    />
+  </div>
+  <div>
+    <label for="amount-input">Amount in ETH</label>
+
+    <input
+      type="text"
+      (keyup)="onChangeAmountVote($event)"
+      id="amount-input"
+      placeholder="Amount in ETH"
+    />
+  </div>
+  <button class="btn btn-priamry my-2" (click)="submitVote()">
+    Submit vote
+  </button>
+</div>
