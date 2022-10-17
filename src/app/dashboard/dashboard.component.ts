@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ethers } from 'ethers';
+import { ApiService } from '../api.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -11,20 +12,31 @@ export class DashboardComponent implements OnInit {
     wallet: ethers.Wallet | undefined;
     etherBalance: string;
     provider: ethers.providers.BaseProvider;
+    totalSupply: String;
 
     privateKey: string;
+    connected: string;
+    apiService: ApiService;
 
-    constructor() {
+    constructor(apiService : ApiService) {
         this.provider = ethers.getDefaultProvider('goerli');
         this.walletAddress = 'Please login with your private key first';
         this.etherBalance = "...";
 
         this.privateKey = '';
-
+        this.connected = '';
+        
+        this.totalSupply = 'Loading...';
+        this.apiService = apiService;
     }
 
     ngOnInit(): void {
+        this.apiService.getTotalSupply().subscribe((response) => {
+            this.totalSupply = response;
+        });
 
+
+        
     }
 
     private updateBalance() {
