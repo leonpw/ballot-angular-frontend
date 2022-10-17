@@ -1,0 +1,6 @@
+<p>YOur wallet address is {{walletAddress}}</p>
+<p>YOur balance is {{etherBalance}}</p>
+
+<input type="text" (keyup)="onKeyUp($event)" id="yourkey" placeholder="Private key"/>
+
+<button class = "btn btn-priamry my-2" (click) ="login()" >Login with your private key</button>
